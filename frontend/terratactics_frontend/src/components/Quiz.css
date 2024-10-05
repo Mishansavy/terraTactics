@@ -5,6 +5,10 @@
   background-image: url("../assets/quizbg.jpeg");
   height: 100vh;
   background-position: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: #fff;
@@ -18,12 +22,25 @@
   display: flex;
   margin: 0 auto;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 20px;
   width: 100%;
   max-width: 400px;
   flex-wrap: wrap;
-  padding: 120px 0px;
+  padding: 50px 0px;
+}
+.quiz-container .quizParagraph {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.quiz-container h3 {
+  font-size: 2.1rem;
+  letter-spacing: 2px;
+}
+
+.quiz-container h2 {
+  color: #007bff;
 }
 
 .choice-wrapper {
@@ -49,4 +66,37 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+.ImageDesc {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ImageDesc img {
+  width: 50%;
+  border-radius: 8px;
+}
+
+.correctContainer {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.CorrectText {
+  font-size: 20px;
+  color: #000;
+}
+
+.correctContainer .ImageDesc p {
+  color: #000;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: justify;
+}
+
+.nextButton {
+  margin-bottom: 20px;
 }
