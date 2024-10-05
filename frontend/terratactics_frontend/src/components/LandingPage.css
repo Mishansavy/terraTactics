@@ -4,7 +4,7 @@
   align-items: center;
   height: 100vh;
   position: relative;
-  background-color: #000;
+  background-color: #ffffff;
   color: #fff;
   overflow: hidden;
 }
@@ -22,6 +22,11 @@
   width: 1920px !important;
   height: 1080 !important;
   margin: 0 auto;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
 
 .input-section {

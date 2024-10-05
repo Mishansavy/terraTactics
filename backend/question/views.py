@@ -9,12 +9,22 @@ class QuizViewSet(viewsets.ModelViewSet):
     queryset = Quiz.objects.all()
     serializer_class = QuizSerializer
 
+    def list(self, request, *args, **kwargs):
+        """
+        Overriding the list method to return quiz questions and answers.
+        """
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+
+        # Customize the list response to include the necessary fields
+        return Response(serializer.data)
+
     def retrieve(self, request, *args, **kwargs):
         # Retrieve the Quiz instance
         instance = self.get_object()
         
         # Extract the choices from the instance
-        choices = instance.choices  #  a JSON array or list
+        choices = instance.choices  # Assuming it's a JSON array or list
         first_choice = choices[0] if choices else None
         
         # Customize your response

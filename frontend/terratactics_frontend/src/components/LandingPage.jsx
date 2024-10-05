@@ -1,38 +1,38 @@
 import React, { useState } from "react";
 import "./LandingPage.css";
 import ReactPlayer from "react-player";
-import axios from "axios"; // Import axios to make HTTP requests
-import HeroVideo from "../assets/video/herosectionVideo.mp4"; // Ensure this path is correct
+import axios from "axios";
+import HeroVideo from "../assets/video/herosectionVideo.mp4";
+import { BASE_URL, Endpoints } from "../api/api";
 
 export function LandingPage({ onStart }) {
   const [name, setName] = useState("");
-  const [videoEnded, setVideoEnded] = useState(false); // To track if video ended
-  const [error, setError] = useState(""); // State to hold any error messages
+  const [videoEnded, setVideoEnded] = useState(false);
+  const [error, setError] = useState("");
 
   const handleStart = async () => {
     if (name.trim()) {
       try {
-        // Send username to the backend
-        const response = await axios.post(
-          "http://192.168.133.208:8000/api/users/",
-          {
-            Username: name, // Send the username as per the field name
-          }
-        );
+        const response = await axios.post(BASE_URL + Endpoints.register, {
+          username: name,
+        });
 
-        // Optional: Check the response status or data
         if (response.status === 201) {
-          // Call the onStart function with the user's name if the request is successful
           onStart(name);
         } else {
           setError("Failed to save username. Please try again.");
         }
       } catch (error) {
-        console.error("Error sending username to backend:", error);
-        setError("An error occurred. Please try again.");
+        if (error.response) {
+          setError(
+            error.response.data.detail || "An error occurred. Please try again."
+          );
+        } else {
+          setError("An error occurred. Please try again.");
+        }
       }
     } else {
-      setError("Please enter a valid name."); // Set error if the name is empty
+      setError("Please enter a valid name.");
     }
   };
 
@@ -40,14 +40,14 @@ export function LandingPage({ onStart }) {
     <div className="landing-page">
       {!videoEnded ? (
         <ReactPlayer
-          className="full-video" // Custom class for styling
+          className="full-video"
           url={HeroVideo}
-          playing={true} // Automatically start playing
-          muted={true} // Mute the video for auto-play
-          controls={false} // Hide video controls
-          width="100%" // Make video full width
-          height="100vh" // Make video full height
-          onEnded={() => setVideoEnded(true)} // Set videoEnded to true when video finishes
+          playing={true}
+          muted={true}
+          controls={false}
+          width="100%"
+          height="100vh"
+          onEnded={() => setVideoEnded(true)}
         />
       ) : (
         <div className="input-section">
@@ -59,8 +59,7 @@ export function LandingPage({ onStart }) {
             onChange={(e) => setName(e.target.value)}
           />
           <button onClick={handleStart}>Start Quiz</button>
-          {error && <p className="error-message">{error}</p>}{" "}
-          {/* Display error message */}
+          {error && <p className="error-message">{error}</p>}
         </div>
       )}
     </div>
