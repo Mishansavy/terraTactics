@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LandingPage.css";
 import ReactPlayer from "react-player";
 import axios from "axios";
@@ -16,9 +16,9 @@ export function LandingPage({ onStart }) {
         const response = await axios.post(BASE_URL + Endpoints.register, {
           username: name,
         });
-
         if (response.status === 201) {
           onStart(name);
+          localStorage.setItem("username", name); // Store username in localStorage
         } else {
           setError("Failed to save username. Please try again.");
         }
@@ -35,6 +35,13 @@ export function LandingPage({ onStart }) {
       setError("Please enter a valid name.");
     }
   };
+
+  useEffect(() => {
+    const savedUsername = localStorage.getItem("username");
+    if (savedUsername) {
+      onStart(savedUsername); // If username is stored, automatically start quiz
+    }
+  }, [onStart]);
 
   return (
     <div className="landing-page">

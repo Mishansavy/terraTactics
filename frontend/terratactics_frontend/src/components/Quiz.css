@@ -2,6 +2,32 @@
   padding: 20px;
   text-align: center;
   position: relative;
+  background-image: url("../assets/quizbg.jpeg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+.quiz-heading span {
+  color: #fff;
+}
+
+.choices-container {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  flex-wrap: wrap;
+  padding: 120px 0px;
+}
+
+.choice-wrapper {
+  width: 100%;
 }
 
 input {
