@@ -14,10 +14,8 @@ class QuizViewSet(viewsets.ModelViewSet):
         # Extract the choices from the instance
         choices = instance.choices  # This is a list like ["10.5 billion years", "13.8 billion years", ...]
 
-        # Example: Return the first choice, but you can customize this as needed
         first_choice = choices[0] if choices else None
         
-        # You can also return all choices or filter them as needed
         all_choices = choices  # Return all choices
 
         # Customize your response
