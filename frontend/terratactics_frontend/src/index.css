@@ -3,9 +3,7 @@ body {
   margin: 0;
   padding: 0;
 }
-#root {
-  background-image: url("./assets/sky.jpg");
-}
+
 h1 {
   color: #333;
 }

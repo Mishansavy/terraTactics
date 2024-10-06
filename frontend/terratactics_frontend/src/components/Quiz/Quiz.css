@@ -111,3 +111,14 @@ button:hover {
   align-items: center;
   justify-content: center;
 }
+
+.coinsContainer h4 {
+  font-size: 18px;
+  color: #000;
+  font-weight: 700;
+}
+.coinsContainer {
+  background-color: #eeff00;
+  border-radius: 20px;
+  padding: 0px 10px;
+}
