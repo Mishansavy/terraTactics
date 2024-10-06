@@ -24,12 +24,13 @@ SECRET_KEY = 'django-insecure-9rg5hwzz+n3c_5m^2n9!s&t=%0iir@&6&^5m%9+lljixkno6ea
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.3.185', 'localhost', '192.168.3.220', '192.168.4.70', '192.168.133.208', '192.168.101.45']
+ALLOWED_HOSTS = ['192.168.3.185', 'localhost', '192.168.3.220', 'terratactics.onrender.com','nasa.mishanshah.com.np' '192.168.4.70', '192.168.133.208', '192.168.101.45']
 # ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+    'https://nasa.mishanshah.com.np',
     'http://192.168.3.185:8000',
     'http://192.168.133.208:8000',
     'http://192.168.3.220:8000',
