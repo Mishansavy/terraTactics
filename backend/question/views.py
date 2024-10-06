@@ -28,6 +28,7 @@ class QuizViewSet(viewsets.ModelViewSet):
             'description': instance.description,
             'first_choice': first_choice,
             'all_choices': choices,
+            'imageupload': instance.imageUpload,
         })
 
     def get_apod_image(self):

@@ -75,6 +75,7 @@ button:hover {
 
 .ImageDesc img {
   width: 50%;
+  height: 400px;
   border-radius: 8px;
 }
 
