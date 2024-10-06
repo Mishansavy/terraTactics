@@ -18,20 +18,23 @@ class QuizViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-        choices = instance.choices
-        first_choice = choices[0] if choices else None
-        # Check if the image is available
-        image_url = instance.imageUpload.url if instance.imageUpload else None
-        return Response({
-            'question': instance.question,
-            'answer': instance.answer,
-            'description': instance.description,
-            'first_choice': first_choice,
-            'all_choices': choices,
-            'imageupload': image_url,
-        })
+def retrieve(self, request, *args, **kwargs):
+    instance = self.get_object()
+    choices = instance.choices
+    first_choice = choices[0] if choices else None
+
+    # Access the image URL properly
+    image_url = instance.imageUpload.url if instance.imageUpload else None
+
+    return Response({
+        'question': instance.question,
+        'answer': instance.answer,
+        'description': instance.description,
+        'first_choice': first_choice,
+        'all_choices': choices,
+        'imageupload': image_url,  # Return the image URL, not the raw image data
+    })
+
 
     def get_apod_image(self):
         api_key = 'oieouBpKog1WD4etk9GYmyeZVHnLEdOYOB6WU0AY'
