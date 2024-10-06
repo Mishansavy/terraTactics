@@ -2,7 +2,7 @@
   padding: 20px;
   text-align: center;
   position: relative;
-  background-image: url("../assets/quizbg.jpeg");
+  background-image: url("../assets/bgimage.jpeg") !important;
   height: 100vh;
   background-position: center;
   align-items: center;

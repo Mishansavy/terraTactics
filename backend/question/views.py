@@ -22,13 +22,15 @@ class QuizViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         choices = instance.choices
         first_choice = choices[0] if choices else None
+        # Check if the image is available
+        image_url = instance.imageUpload.url if instance.imageUpload else None
         return Response({
             'question': instance.question,
             'answer': instance.answer,
             'description': instance.description,
             'first_choice': first_choice,
             'all_choices': choices,
-            'imageupload': instance.imageUpload,
+            'imageupload': image_url,
         })
 
     def get_apod_image(self):
