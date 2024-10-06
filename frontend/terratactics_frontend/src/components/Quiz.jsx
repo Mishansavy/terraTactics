@@ -76,7 +76,7 @@ export default function Quiz({ name }) {
           setCurrentLevelIndex(currentLevelIndex + 1);
           alert(
             `Congratulations! You've reached ${
-              levels[currentLevelIndex + 1].title
+              levels[currentLevelIndex + 1].note
             } level!`
           );
         }
