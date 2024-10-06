@@ -18,8 +18,8 @@
 }
 
 .full-video video {
-  width: 1920px !important;
-  height: 1080 !important;
+  width: 100vw !important;
+  height: 1080px !important;
   margin: 0 auto;
 }
 

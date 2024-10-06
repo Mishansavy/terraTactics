@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./LandingPage.css";
 import ReactPlayer from "react-player";
 import axios from "axios";
-import HeroVideo from "../assets/video/herosectionVideo.mp4";
-import { BASE_URL, Endpoints } from "../api/api";
+import HeroVideo from "../../assets/video/herosectionVideo.mp4";
+import { BASE_URL, Endpoints } from "../../api/api";
 
 export function LandingPage({ onStart }) {
   const [name, setName] = useState("");

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Quiz.css";
-import Endpoints, { BASE_URL } from "../api/api";
+import Endpoints, { BASE_URL } from "../../api/api";
 
 const levels = [
   { note: "Star Field Navigation", threshold: 3 },
@@ -12,7 +12,7 @@ const levels = [
 export default function Quiz({ name }) {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [coinCount, setCoinCount] = useState(0);
+  const [coinCount, setCoinCount] = useState(5);
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);
   const [nasaImage, setNasaImage] = useState("");
   const [description, setDescription] = useState("");
@@ -66,11 +66,21 @@ export default function Quiz({ name }) {
       );
 
       if (response.data.correct) {
-        setDescription(response.data.description);
-        setNasaImage(response.data.image_url);
-        const newCoinCount = coinCount + 1;
+        // setDescription(response.data.description);
+        // setNasaImage(response.data.image_url);
+        const newCoinCount = coinCount + 5;
         setCoinCount(newCoinCount);
         setIsCorrect(true);
+
+        // Fetch additional image and description from  questions
+        const imageResponse = await axios.get(
+          `${BASE_URL}${Endpoints.quiz}${currentQuestion.id}`
+        );
+        const imageData = imageResponse.data.imageUpload;
+        console.log(imageData, "hhe");
+
+        setNasaImage(imageData.imageUpload);
+        setDescription(imageData.description);
 
         if (newCoinCount === levels[currentLevelIndex + 1]?.threshold) {
           setCurrentLevelIndex(currentLevelIndex + 1);
@@ -81,6 +91,8 @@ export default function Quiz({ name }) {
           );
         }
       } else {
+        const newCoinCount = coinCount - 1;
+        setCoinCount(newCoinCount < 0 ? 0 : newCoinCount);
         setIsCorrect(false);
       }
     } catch (error) {
@@ -148,7 +160,10 @@ export default function Quiz({ name }) {
         </div>
       )}
 
-      <div style={{ position: "absolute", top: 10, right: 10 }}>
+      <div
+        style={{ position: "absolute", top: 10, right: 10 }}
+        className="coinsContainer"
+      >
         <h4>Coins: {coinCount}</h4>
       </div>
     </div>
