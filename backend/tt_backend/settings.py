@@ -24,22 +24,16 @@ SECRET_KEY = 'django-insecure-9rg5hwzz+n3c_5m^2n9!s&t=%0iir@&6&^5m%9+lljixkno6ea
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['192.168.3.185', 'localhost', '192.168.3.220', 'terratactics.onrender.com','nasa.mishanshah.com.np' '192.168.4.70', '192.168.133.208', '192.168.101.45']
-ALLOWED_HOSTS = ['localhost', 'terratactics.onrender.com','nasa.mishanshah.com.np']
-# ALLOWED_HOSTS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOW_ALL_ORIGINS = False
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:5173',
-#     'https://nasa.mishanshah.com.np',
-#     'http://192.168.3.185:8000',
-#     'http://192.168.133.208:8000',
-#     'http://192.168.3.220:8000',
-#     'http://192.168.4.70:8000',
-#     'http://192.168.101.45:8000',
-    
-    
-# ]
+ALLOWED_HOSTS = ['localhost', 'terratactics.onrender.com','nasa.mishanshah.com.np', '192.168.3.185', '192.168.3.220']
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173', 'http://192.168.3.220:8000', 'http://192.168.3.185:8000']
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'https://nasa.mishanshah.com.np',
+    'http://192.168.3.185:8000',
+    'http://192.168.3.220:8000',   
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -52,7 +46,7 @@ INSTALLED_APPS = [
     'question',
     'user',
     'rest_framework',
-    'corsheaders',  # Make sure this is included
+    'corsheaders', 
 ]
 
 MIDDLEWARE = [
@@ -60,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # CORS middleware should be at the top
+    'corsheaders.middleware.CorsMiddleware'
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

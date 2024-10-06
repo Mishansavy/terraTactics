@@ -4,4 +4,4 @@ from .models import Quiz
 class QuizSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Quiz
-        fields = ['id', 'question', 'answer', 'description', 'choices']
+        fields = ['id', 'question', 'answer', 'description', 'choices', 'imageUpload']

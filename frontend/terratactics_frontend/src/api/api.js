@@ -1,4 +1,4 @@
-export const BASE_URL = "https://todoapp-backend-sad2.onrender.com:10000";
+export const BASE_URL = "https://terratactics.onrender.com";
 
 export const Endpoints = {
   register: "/api/users/",
